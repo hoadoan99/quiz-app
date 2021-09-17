@@ -4,52 +4,82 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Test Name</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Question {{count}} of 20</li>
+            <li class="breadcrumb-item active" aria-current="page">Question {{count + 1}} of 20</li>
           </ol>
         </nav>
       </div>
       <div class="content">
+        <form  [formGroup]="form" novalidate >
         <!-- Question 1 -->
         <div class="question"><h3>{{question?.question}}</h3></div><hr>
+        <div class="check-box" *ngIf="question.multi">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" [value]="question?.options?.a" formControlName="choice" >
+            <label class="form-check-label">
+              {{question?.options?.a}}
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" [value]="question?.options?.b"  formControlName="choice" >
+            <label class="form-check-label">
+              {{question?.options?.b}}
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" [value]="question?.options?.c"  formControlName="choice" >
+            <label class="form-check-label">
+              {{question?.options?.c}}
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" [value]="question?.options?.d"  formControlName="choice" >
+            <label class="form-check-label">
+              {{question?.options?.c}}
+            </label>
+          </div>
+        </div>
+        <div class="answer-wrapper" *ngIf="!question.multi">
         <!-- Answer 1 -->
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-          <label class="form-check-label" for="flexRadioDefault1">
+          <input class="form-check-input" type="radio" name="flexRadioDefault">
+          <label class="form-check-label">
            A. {{question?.options?.a}}
           </label>
         </div>
         <!-- Answer 2 -->
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-          <label class="form-check-label" for="flexRadioDefault1">
+          <input class="form-check-input" type="radio" name="flexRadioDefault">
+          <label class="form-check-label">
            B. {{question?.options?.b}}
           </label>
         </div>
         <!-- Answer 3 -->
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-          <label class="form-check-label" for="flexRadioDefault1">
+          <input class="form-check-input" type="radio" name="flexRadioDefault">
+          <label class="form-check-label">
            C. {{question?.options?.c}}
           </label>
         </div>
         <!-- Answer 4 -->
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-          <label class="form-check-label" for="flexRadioDefault1">
+          <input class="form-check-input" type="radio" name="flexRadioDefault">
+          <label class="form-check-label">
            D. {{question?.options?.d}}
           </label>
         </div>
-
+      </div>
+      </form>
       </div>
     </div>
     <div class="controls">
       <div class="group-button">
-        <button class="btn btn-primary" (click)="buttonPrev()">Previous</button>
-        <button class="btn btn-primary"  (click)="buttonNext()">Next</button>
+        <button class="btn btn-primary" (click)="buttonPrev()" *ngIf="count > 0">Previous</button>
+        <button class="btn btn-primary"  (click)="buttonNext()" *ngIf="count != 19">Next</button>
+        <button class="btn btn-primary"  (click)="buttonSubmit()" *ngIf="count == 19">Submit</button>
       </div>
       <div class="time-left">
         <span>Time Left: </span>
-        <countdown [config]="{leftTime: 1800}"></countdown>
+        <countdown [ngClass]="{'text-red': timer < 300 }"  [config]="{leftTime: timer }"></countdown>
       </div>
     </div>
 </div>

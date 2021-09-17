@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { QuizService } from 'src/app/shared/quiz.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { QuizService } from 'src/app/shared/quiz.service';
 })
 export class QuizInputComponent implements OnInit {
   codeId:any;
-  constructor(private quizService:QuizService) { }
+  status = false;
+  codeWrong = false;
+  constructor(private route: Router,private quizService:QuizService) { }
 
   ngOnInit(): void {
 
@@ -16,10 +19,19 @@ export class QuizInputComponent implements OnInit {
     // this.quizService.setCodeId(this.codeId)
 
   onSubmit(value:any){
-    console.log(this.codeId);
-    this.quizService.postCodeIdStart().subscribe((res:any)=>{
-        console.log(res);
-    })
+      if (value.codeId != undefined &&  value.codeId != null && value.codeId != ' ' && this.codeId == 'fafafa' ) {
+        this.quizService.setCodeId(value.codeId)
+        this.route.navigate(['/quiz-overview']);
+        this.status = false;
+        this.codeWrong = false;
+      }  else{
+      this.status = true;
+      this.codeWrong = true;
+      }
+      //  console.log(value.code);
+    // this.quizService.postCodeIdStart().subscribe((res:any)=>{
+    //     console.log(res);
+    // })
   }
 
 

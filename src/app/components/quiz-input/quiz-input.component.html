@@ -1,4 +1,6 @@
 <div class="input-group mb-3">
+  <h2 *ngIf="!status">Enter your code below: </h2>
+  <h3 *ngIf="codeWrong">You have not entered the code or the code is wrong!!!</h3>
   <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" novalidate>
     <input
     type="text"
@@ -6,7 +8,6 @@
     name="codeId"
     [(ngModel)]="codeId"
     >
-    <a class="btn btn-secondary" type="button" routerLink="/quiz-overview" >Enter Code</a>
+    <button class="btn btn-secondary" type="submit" >Enter Code</button>
   </form>
-  <h2>Enter your code</h2>
 </div>

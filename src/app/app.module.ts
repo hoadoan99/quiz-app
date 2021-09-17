@@ -11,8 +11,9 @@ import { QuizQuizOverviewComponent } from './components/quiz-quiz-overview/quiz-
 import { FormsModule } from '@angular/forms';
 import { TimerComponent } from './components/timer/timer.component';
 import { CountdownModule } from 'ngx-countdown';
-
+import { ReactiveFormsModule } from '@angular/forms';
 // Materials
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -30,7 +31,9 @@ import { CountdownModule } from 'ngx-countdown';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    CountdownModule
+    CountdownModule,
+    ReactiveFormsModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

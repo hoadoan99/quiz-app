@@ -12,11 +12,14 @@ line-height: 100%;
 border: none;
 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-a{
+button{
   display: block;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border: none;
 }
 h2{
-  color: rgb(160, 7, 7);
+  color: gray;
+}
+h3{
+  color: red;
 }

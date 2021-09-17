@@ -15,7 +15,7 @@ export class QuizService {
 
   postCodeIdStart(){
     return this.http.post('http://localhost:3000/api/quiz/start',{
-      code:"fafafa"
+      code:'fafafa'
     });
 
 
