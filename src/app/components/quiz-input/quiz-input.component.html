@@ -1,0 +1,12 @@
+<div class="input-group mb-3">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" novalidate>
+    <input
+    type="text"
+    class="form-control ct-input"
+    name="codeId"
+    [(ngModel)]="codeId"
+    >
+    <a class="btn btn-secondary" type="button" routerLink="/quiz-overview" >Enter Code</a>
+  </form>
+  <h2>Enter your code</h2>
+</div>
